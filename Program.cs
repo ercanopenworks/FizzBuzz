@@ -4,35 +4,40 @@ namespace FizzBuzz
 {
     class Program
     {
-        static void Main(string[] args)
+        static public string Run(int N, int M)
         {
-            int n = 25;
 
-            //for (int i = 1; i <= n; i++)
-            //{
-            //    if ((i % 3 == 0) && (i % 5 == 0))
-            //    {
-            //        Console.WriteLine("FizzBuzz");
-            //    }
-            //    else if (i % 3 == 0)
-            //    {
-            //        Console.WriteLine("Fizz");
-            //    }
-            //    else if (i % 5 == 0)
-            //    {
-            //        Console.WriteLine("Buzz");
-            //    }
-            //    else Console.WriteLine(i.ToString());
-            //}
+            List<string> sequence = new List<string>();
 
-            for (int i = 1; i <= n; i++)
+            for (int i = N; i <= M; i++)
             {
 
                 string res = (i % 3 == 0 && i % 5 == 0) ? "FizzBuzz" : (i % 5 == 0) ? "Buzz" :
                            (i % 3 == 0) ? "Fizz" : i.ToString();
-                Console.WriteLine(res);
+
+                sequence.Add(res);
             }
+            return String.Join(",", sequence.ToArray());
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please input start from N to M ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            int m = Convert.ToInt32(Console.ReadLine());
+
+            //for (int i = n; i <= m; i++)
+            //{
+
+            //    string res = (i % 3 == 0 && i % 5 == 0) ? "FizzBuzz" : (i % 5 == 0) ? "Buzz" :
+            //               (i % 3 == 0) ? "Fizz" : i.ToString();
+            //    Console.WriteLine(res);
+            //}
+
+            string result = Run(n, m);
+
+            Console.WriteLine(result);
             Console.ReadKey();
+
         }
     }
 }
